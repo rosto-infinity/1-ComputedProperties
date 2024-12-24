@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counter App</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="grid gap-4 justify-center items-center h-screen">
+    <h1 class="text-7xl text-red-600 font-bold underline">
+      Count
+    </h1>
+
+    <span class="mt-5 p-4 text-center bg-green-500 rounded-md text-3xl text-white" id="count">
+      0
+    </span>
+    <button onclick="increment()" class="mt-5 px-7 py-4 bg-green-500 rounded-md text-3xl text-white">
+      Increment
+    </button>
+    <button 
+      onclick="decrement()"
+      class="mt-5 px-7 py-4 bg-green-500 rounded-md text-3xl text-white"
+      id="decrementBtn"
+    >
+      Decrement
+    </button>
+  </div>
+
+  <script>
+    let count = 0;
+
+    function increment() {
+      count++;
+      updateCount();
+    }
+
+    function decrement() {
+      if (count > 0) {
+        count--;
+        updateCount();
+      }
+    }
+
+    function updateCount() {
+      document.getElementById('count').textContent = count;
+      document.getElementById('decrementBtn').classList.toggle('bg-red-100', count < 1);
+      document.getElementById('decrementBtn').classList.toggle('bg-green-800', count > 0);
+    }
+  </script>
+</body>
+</html>
